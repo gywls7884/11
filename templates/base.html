@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+<title>{% block title %}Django Web Programming{% endblock %}</title>
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "css/base.css" %}{% endblock %}" />
+<link rel="stylesheet" type="text/css" href="{% block extrastyle %}{% endblock %}" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<style>
+.welcome{
+        color:black;
+        font-size: 15px;
+        margin-top: 13px;
+}
+
+.b {
+    text-align: center;
+    width: 100%;
+    background-color: #fff;
+}
+.b li {
+        width: 20%;
+    }
+
+.content5{
+                border-top: 1px solid #5D5D5D;
+                padding-top: 30px;
+                display:inline;
+                margin: 40px auto;
+                float:left;
+                width:100%;
+                height:10px;
+                background-color: rgba(232,253,225,0);
+                text-align: center;
+            }
+
+    .footer1 img{
+         margin-left: 10px;
+         height: 110px;
+         width: 250px;
+            }
+
+     .logo {
+                /*margin-left: 38%;*/
+                margin: 0 auto;
+                text-align: center;
+                padding: 5px 0 1px 0;
+                text-align: center;
+            }
+
+</style> 
+</head>
+<body>
+        <div class="topmenu">
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_active %}
+                        <li class = "welcome">환영합니다~
+                        <strong>{% firstof user.get_short_name user.get_username %}</strong></li>
+                        <li><a href="{% url 'password_change' %}">비밀번호변경</a></li> 
+                        <li><a href="{% url 'logout' %}">로그아웃</a></li>                       
+                        {% else %}
+                        <li class = "welcome">환영합니다~</li>
+                        <li><a href="{% url 'login' %}">로그인</a></li>
+                        <li><a href="{% url 'register' %}">회원가입</a></li>
+                        <li><a href="{% url 'admin:index' %}">관리자</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+        </div>
+        <div class="logo">
+        <a href="{% url 'login' %}"><img src="{% static 'img/logoo.png' %}" style="height:100px;"/></a>
+        </div>
+        <div class="menu">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="a collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="b nav navbar-nav">
+                        <li><a href="#">전원</a></li>
+                        <li><a href="#">병원찾기</a></li>
+                        <li><a href="#">응급처치방법</a></li>
+                        <li><a href="#">응급교육</a></li>
+                        <li><a href="#">고객센터</a></li>
+                    </ul>
+
+                </div>
+            </nav>
+{% block content %}{% endblock %}
+
+{% block footer %}{% endblock %}
+
+</body>
+</html>
+
+
+<!-- <div id="header">
+    <h2 class="maintitle">Easy&amp;Fast Django Web Programming</h2>
+    {% if user.is_active %}
+    <h4 class="welcome">Welcome,
+                <strong>{% firstof user.get_short_name user.get_username %}</strong> /
+                <a href="{% url 'password_change' %}">Change Password</a> /
+                <a href="{% url 'logout' %}">Logout</a>
+    </h4>
+    {% else %}
+    <h4 class="welcome">Welcome, Anonymous /
+                <a href="{% url 'login' %}">Login</a> /
+                <a href="{% url 'register' %}">Register</a>
+    </h4>
+    {% endif %}
+</div>
+
+<div id="menu">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'bookmark:index' %}">Bookmark</a></li>
+    <li><a href="{% url 'blog:index' %}">Blog</a></li>
+    <li><a href="{% url 'photo:index' %}">Photo</a></li>
+
+    <li>Add&bigtriangledown;
+        <ul>
+            <li><a href="{% url 'bookmark:add' %}">Bookmark</a></li>
+            <li><a href="{% url 'blog:add' %}">Post</a></li>
+            <li><a href="{% url 'photo:album_add' %}">Album</a></li>
+            <li><a href="{% url 'photo:photo_add' %}">Photo</a></li>
+        </ul>
+    </li>
+    <li>Change&bigtriangledown;
+        <ul>
+            <li><a href="{% url 'bookmark:change' %}">Bookmark</a></li>
+            <li><a href="{% url 'blog:change' %}">Post</a></li>
+            <li><a href="{% url 'photo:album_change' %}">Album</a></li>
+            <li><a href="{% url 'photo:photo_change' %}">Photo</a></li>
+        </ul>
+    </li>
+
+    <li><a href="{% url 'blog:post_archive' %}">Archive</a></li>
+    <li><a href="{% url 'blog:search' %}">Search</a></li>
+    <li><a href="{% url 'admin:index' %}">Admin</a></li>
+</div> -->
+
+

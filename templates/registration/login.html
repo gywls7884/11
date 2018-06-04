@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}login.html{% endblock %}
+
+{% load staticfiles %}
+{% block extrastyle %}{% static "css/forms.css" %}{% endblock %}
+
+{% block content %}
+
+    <style>
+            .login {
+            text-align: center;
+            margin: 100px auto;
+        }
+
+        .submit{
+            margin: 5px 0;
+            text-align: center;
+        }
+
+
+
+    </style>
+    <form action="." method="post">{% csrf_token %}
+    {% if form.errors %}
+    <p class="errornote">틀렸어요</p>
+    {% endif %}
+    
+    <div class="login">
+        <h1>로그인 </h1>
+        <div class="radio">
+        <input type="radio" name="fruit" value="일반" /> 일반 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <input type="radio" name="fruit" value="병원" /> 병원&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <input type="radio" name="fruit" value="관리자" /> 관리자&nbsp&nbsp&nbsp&nbsp&nbsp
+        </div>
+
+        <form role="form" name="loginform" id="loginform" action="wp-login.php" method="post">
+            <div class="form-group">
+               아 이 디&nbsp : {{ form.username }}
+            </div>
+
+            <div class="form-group">
+                비밀번호 :  {{ form.password }}
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="rememberme">
+                <input name="rememberme" type="checkbox" id="rememberme" value="forever">로그인상태유지</label>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="">아이디/비밀번호찾기</a>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="">회웝가입</a>
+            </div>
+            <br>
+            <div class="submit">
+                <input type="submit" value="Log In" class="btn btn-default " 
+                style="height: 40px; width: 400px; background-color: #EAEAEA;"/> 
+                   <!-- input type="hidden" name="next" value="/" /-->
+                <input type="hidden" name="next" value="{{ next }}" />
+                </div>
+                <script type="text/javascript">document.getElementById('id_username').focus();</script>
+                </form>
+    </div>  
+
+
+
+{% endblock %} 
+

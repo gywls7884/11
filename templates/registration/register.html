@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}register.html{% endblock %}
+
+{% load staticfiles %}
+{% block extrastyle %}{% static "css/forms.css" %}{% endblock %}
+
+{% block content %}
+<style>
+
+/* Form Error */
+
+.errornote {
+    display: block;
+    margin: 5px 0;
+/*    border: 1px solid #c30;*/
+    background: #fcf;
+    padding: 5px 25px;
+    color: #c30;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Authentication Forms */
+
+h1 {
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 450px;
+    margin-right: 400px;
+}
+
+p{
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 450px;
+    margin-right: 400px;
+}
+
+fieldset {
+
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 400px;
+    margin-right: 400px;
+/*    border: 5px solid #ccc;*/
+    width:350px;
+    height: 350px;
+    text-align:center; vertical-align:middle;
+
+}
+
+.aligned label {
+
+    float: left;
+    width: 170px;
+    padding: 3px 10px 0 0;
+}
+
+.form-row {
+
+    padding: 10px;
+    font-size: 11px;
+
+}
+
+.submit {
+    position: absolute;
+    margin-top: 600px;
+    margin-left: 400px;
+    margin-right: 400px;
+
+    
+    width:375px;
+/*    border: 5px solid #ccc;*/
+    text-align: center;
+}
+
+.submit input {
+    
+    margin: 10px;
+    background: #B2CCFF;
+
+}
+
+#content{
+    margin: 100px auto;
+
+}
+
+</style>
+
+<div id="content">
+   <h1>회원가입</h1>
+<br>
+    <form method="post" action="."> {% csrf_token %}
+
+    {% if form.errors %}
+    <p class="errornote">Wrong! Please correct the error(s) below.</p>
+    {% endif %}
+    
+    <p>사용자 이름 등을 입력하세요</p>
+    <br>
+    <fieldset class="aligned">
+    
+        <div class="form-row">
+            아이디 : {{ form.username }}
+        </div>
+        
+        <div class="form-row">
+            비밀번호 : {{ form.password1 }}
+        </div>
+        
+        <div class="form-row">
+            비밀번호 확인 : {{ form.password2 }}
+        </div>
+
+        <div class="form-row">
+            이메일 : {{ form.email }}
+        </div>
+
+        <div class="form-row">
+            전화번호 : {{ form.phone }}
+        </div>
+
+
+    </fieldset>
+    
+    <div class="submit">
+        <input type="submit" value="회원가입"
+        class="btn btn-default " 
+        style="height: 40px; width: 380px; background-color: #EAEAEA;"/>
+    </div>
+    
+    <script type="text/javascript">document.getElementById("id_username").focus();</script>
+    </form>
+
+</div>
+
+{% endblock %}
