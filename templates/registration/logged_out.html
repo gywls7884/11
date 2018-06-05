@@ -2,14 +2,39 @@
 
 {% block title %}logged_out.html{% endblock %}
 
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 {% block content %}
-<div id="content">
+<style>
+.content{
+			font-size: 30px;
+            
+            margin-top: 150px;
+            text-align: center;
+	
+}
+</style>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-    <h1>Logged out </h1>
+<div class="content">
 
-    <p>"Thanks for spending your quality time with this web site today."</p>
 
-    <p><a href="{% url 'login' %}">Log in again</a></p>
+
+    <h1>로그아웃 되었습니다. </h1>
+    <br>
+    <p>"오늘도 저희 웹사이트를 이용해 주셔서 감사합니다.."</p>
+    <br>
+
+    <div class="submit">
+    	<a href="{% url 'login' %}">
+    <input type="submit" value="다시 로그인하기" class="btn" 
+                style="height: 40px; width: 400px; background-color: #BDBDBD;"/></a>
+
+
 
 </div>
+        <script src="js/jquery-2.1.3.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
 {% endblock %}

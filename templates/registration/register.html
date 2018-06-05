@@ -6,130 +6,99 @@
 {% block extrastyle %}{% static "css/forms.css" %}{% endblock %}
 
 {% block content %}
-<style>
+    <style>
 
-/* Form Error */
+        .submit1{
+            /*margin: 5px 0;*/
+            text-align: center;
+        }
 
-.errornote {
-    display: block;
-    margin: 5px 0;
-/*    border: 1px solid #c30;*/
-    background: #fcf;
-    padding: 5px 25px;
-    color: #c30;
-    font-size: 12px;
-    font-weight: bold;
-}
 
-/* Authentication Forms */
+        .content {
+            width: 50%;
+            height: 500px;
+            background:#fff;
+            margin: 60px auto;
+            border:1px solid #e5e5e5;
+            -moz-box-shadow: rgba(200,200,200,.7) 0 4px 10px -1px;
+            -webkit-box-shadow: rgba(200,200,200,.7) 0 4px 10px -1px;
+            box-shadow: rgba(200,200,200,.7) 0 4px 10px -1px;
+            text-align: center;
+            padding-top: 20px;
+            font-family: Arial, sans-serif;
+        }
 
-h1 {
-    position: absolute;
-    margin-top: 150px;
-    margin-left: 450px;
-    margin-right: 400px;
-}
+        .content h1{
+            font-size: 30px;
+            font-weight: bold;
+        }
 
-p{
-    position: absolute;
-    margin-top: 200px;
-    margin-left: 450px;
-    margin-right: 400px;
-}
 
-fieldset {
 
-    position: absolute;
-    margin-top: 200px;
-    margin-left: 400px;
-    margin-right: 400px;
-/*    border: 5px solid #ccc;*/
-    width:350px;
-    height: 350px;
-    text-align:center; vertical-align:middle;
 
-}
+        .content form {
+            margin:0px auto;                     
+            margin-top:30px;
+            padding:20px;
+        }
 
-.aligned label {
+        .form-row{
+            font-size: 11pt;
+            font-family: Arial, sans-serif;
+        }
 
-    float: left;
-    width: 170px;
-    padding: 3px 10px 0 0;
-}
+                .errornote{
+            text-align: center;
+            color: red;
+            font-size: 16px;
+        }
 
-.form-row {
-
-    padding: 10px;
-    font-size: 11px;
-
-}
-
-.submit {
-    position: absolute;
-    margin-top: 600px;
-    margin-left: 400px;
-    margin-right: 400px;
-
-    
-    width:375px;
-/*    border: 5px solid #ccc;*/
-    text-align: center;
-}
-
-.submit input {
-    
-    margin: 10px;
-    background: #B2CCFF;
-
-}
-
-#content{
-    margin: 100px auto;
-
-}
 
 </style>
 
-<div id="content">
-   <h1>회원가입</h1>
-<br>
     <form method="post" action="."> {% csrf_token %}
 
-    {% if form.errors %}
-    <p class="errornote">Wrong! Please correct the error(s) below.</p>
-    {% endif %}
-    
-    <p>사용자 이름 등을 입력하세요</p>
-    <br>
+
+
+<div class="content">
+
+   <h1>회원가입</h1>
+   <br>
+
     <fieldset class="aligned">
     
         <div class="form-row">
-            아이디 : {{ form.username }}
+            아 이 디&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  {{ form.username }}
         </div>
-        
+        <br>
         <div class="form-row">
-            비밀번호 : {{ form.password1 }}
+            비 밀 번 호&nbsp&nbsp&nbsp&nbsp  {{ form.password1 }}
         </div>
-        
+        <br>
         <div class="form-row">
-            비밀번호 확인 : {{ form.password2 }}
+            비밀번호 확인&nbsp  {{ form.password2 }}
         </div>
-
+<!-- 
         <div class="form-row">
             이메일 : {{ form.email }}
         </div>
 
         <div class="form-row">
             전화번호 : {{ form.phone }}
-        </div>
+        </div> -->
 
 
     </fieldset>
+    <br>
+        {% if form.errors %}
+    <p class="errornote">정확하게 입력해주세요.</p>
+    {% endif %}
     
-    <div class="submit">
+    <br>
+    <div class="submit1">
         <input type="submit" value="회원가입"
-        class="btn btn-default " 
-        style="height: 40px; width: 380px; background-color: #EAEAEA;"/>
+        class="btn  " 
+        style="height: 40px; width: 400px; background-color: #BDBDBD;"/>
     </div>
     
     <script type="text/javascript">document.getElementById("id_username").focus();</script>
@@ -138,3 +107,4 @@ fieldset {
 </div>
 
 {% endblock %}
+
